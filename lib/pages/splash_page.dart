@@ -9,6 +9,14 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 1)).then((_)=>widget.onInitializationComplete());
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,10 +25,16 @@ class _SplashPageState extends State<SplashPage> {
       debugShowCheckedModeBanner: false,
       home: Center(
         child: Container(
-        height: 200,
-        width: 200,
-        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/letter-d.png'), fit: BoxFit.contain)),
-      ),),
+          height: 200,
+          width: 200,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/letter-d.png'),
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
