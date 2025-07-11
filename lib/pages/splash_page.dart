@@ -11,6 +11,16 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      title: "Ethioflix",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      debugShowCheckedModeBanner: false,
+      home: Center(
+        child: Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/letter-d.png'), fit: BoxFit.contain)),
+      ),),
+    );
   }
 }
