@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_movie_app/model/app_config.dart';
+import 'package:flutter_movie_app/services/http_service.dart';
 import 'package:get_it/get_it.dart';
 
 class SplashPage extends StatefulWidget {
@@ -17,12 +18,12 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 1)).then(
-      (_) => _setup(context).then((_) => widget.onInitializationComplete()),
-    );
+    Future.delayed(
+      Duration(seconds: 1),
+    ).then((_) => _setup().then((_) => widget.onInitializationComplete()));
   }
 
-  Future<void> _setup(BuildContext _context) async {
+  Future<void> _setup() async {
     final getit = GetIt.instance;
 
     final configFile = await rootBundle.loadString('assets/config/main.json');
@@ -35,6 +36,8 @@ class _SplashPageState extends State<SplashPage> {
         API_KEY: configData['API_KEY'],
       ),
     );
+
+    getit.registerSingleton<HTTPService>(HTTPService());
   }
 
   @override
