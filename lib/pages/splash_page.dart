@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_movie_app/model/app_config.dart';
 import 'package:flutter_movie_app/services/http_service.dart';
+import 'package:flutter_movie_app/services/movie_service.dart';
 import 'package:get_it/get_it.dart';
 
 class SplashPage extends StatefulWidget {
@@ -38,6 +39,8 @@ class _SplashPageState extends State<SplashPage> {
     );
 
     getit.registerSingleton<HTTPService>(HTTPService());
+
+    getit.registerSingleton<MovieService>(MovieService());
   }
 
   @override
