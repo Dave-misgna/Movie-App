@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/model/search_category.dart';
 
 class ForegroundUi extends StatelessWidget {
   final double height;
@@ -37,7 +38,10 @@ class ForegroundUi extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [searchBar()],
+        children: [
+          searchBar(),
+          categorySelection(),
+          ],
       ),
     );
   }
@@ -53,13 +57,53 @@ class ForegroundUi extends StatelessWidget {
         decoration: InputDecoration(
           focusedBorder: InputBorder.none,
           border: InputBorder.none,
-          prefixIcon: Icon(Icons.search, color: Colors.white24,),
+          prefixIcon: Icon(Icons.search, color: Colors.white24),
           hintText: "Search",
           hintStyle: TextStyle(color: Colors.white54),
           filled: false,
-          fillColor: Colors.white24
+          fillColor: Colors.white24,
         ),
       ),
+    );
+  }
+
+  Widget categorySelection() {
+    return DropdownButton(
+      dropdownColor: Colors.black38,
+      value: SearchCategory.popular,
+      icon: Icon(
+        Icons.menu,
+        color: Colors.white24,
+        ),
+      underline: Container(height: 1, color: Colors.white24),
+      onChanged: (value) {},
+      items: [
+        DropdownMenuItem(
+          value: SearchCategory.popular,
+          child: Text(
+            SearchCategory.popular,
+            style: TextStyle(color: Colors.white),
+          ),
+          
+        ),
+
+        DropdownMenuItem(
+          value: SearchCategory.upcomming,
+          child: Text(
+            SearchCategory.upcomming,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+
+        DropdownMenuItem(
+          value: SearchCategory.none,
+          child: Text(
+            SearchCategory.none,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+
+      ],
     );
   }
 }
