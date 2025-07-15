@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/model/search_category.dart';
+import 'package:flutter_movie_app/pages/movies_list.dart';
 
 class ForegroundUi extends StatelessWidget {
   final double height;
@@ -21,7 +22,14 @@ class ForegroundUi extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [topBar()],
+        children: [
+          topBar(),
+          Container(
+            height: height * 0.83,
+            padding: EdgeInsets.symmetric(vertical: height * 0.01),
+            child:MoviesList(height: height, width: width) ,
+          )
+          ],
       ),
     );
   }
