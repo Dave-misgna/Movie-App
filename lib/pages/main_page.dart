@@ -14,6 +14,7 @@ class MainPage extends ConsumerWidget {
     TextEditingController movieSearch = TextEditingController();
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         alignment: Alignment.center,
         children: [
