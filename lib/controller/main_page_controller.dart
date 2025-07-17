@@ -5,9 +5,7 @@ import 'package:get_it/get_it.dart';
 
 class MainPageController extends StateNotifier<MainPageData> {
   MainPageController([MainPageData? state])
-    : super(state ?? MainPageData.initial()) {
-    getMovies();
-  }
+    : super(state ?? MainPageData.initial()) {}
 
-  final MovieService _movieService = GetIt.instance;
+
 }
