@@ -16,6 +16,9 @@ class MainPageController extends StateNotifier<MainPageData> {
     try {
       List<MovieModel> movies = [];
       movies = await _movieService.getPopularMovies(state.page);
-    } catch (e) {}
+      state = state.copyWith(movies: [...state.movies, ...movies], page: state.page + 1);
+    } catch (e) {
+      print('Error fetching movies: $e');
+    }
   }
 }

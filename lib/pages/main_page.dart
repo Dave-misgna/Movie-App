@@ -5,11 +5,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class MainPage extends ConsumerWidget {
   const MainPage({super.key});
+  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
+
+    
 
     TextEditingController movieSearch = TextEditingController();
 

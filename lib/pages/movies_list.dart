@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/model/movie_model.dart';
 import 'package:flutter_movie_app/widget/movie_tile.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MoviesList extends StatelessWidget {
+import '../controller/main_page_controller.dart';
+import '../controller/provider.dart';
+import '../model/main_page_data.dart';
+
+class MoviesList extends ConsumerWidget {
   final double height;
   final double width;
   const MoviesList({super.key, required this.height, required this.width});
 
   @override
-  Widget build(BuildContext context) {
-    final List<MovieModel> movies = [];
+  Widget build(BuildContext context, WidgetRef ref) {
+    
+    
+    // Access the MainPageController and MainPageData using Riverpod
+    MainPageController mainPageController = ref.watch(mainPageDataControllerProvider.notifier);
+    MainPageData mainPageData = ref.watch(mainPageDataControllerProvider);
+    
+    final List<MovieModel> movies = mainPageData.movies;
 
-    for (var i = 0; i < 3; i++) {
-      movies.add(
-        MovieModel(
-          name: 'Thor',
-          language: 'EN',
-          isAdult: false,
-          description: "A Super hero movie",
-          posterPath: "/AEgggzRr1vZCLY86MAp93li43z.jpg",
-          backdropPath: "/nKyBbFSooRPTJVqjrDteD1lF733.jpg",
-          rating: 9.1,
-          releaseDate: '2025-06-03',
-        ),
-      );
-    }
+    
 
     if (movies.isNotEmpty) {
       return ListView.builder(
