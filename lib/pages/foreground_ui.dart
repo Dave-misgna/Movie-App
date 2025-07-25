@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/model/search_category.dart';
 import 'package:flutter_movie_app/pages/movies_list.dart';
 
-class ForegroundUi extends StatelessWidget {
+import '../controller/main_page_controller.dart';
+import '../controller/provider.dart';
+import '../model/main_page_data.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class ForegroundUi extends ConsumerWidget {
   final double height;
   final double width;
   final TextEditingController movieSearch;
-  const ForegroundUi({
+  late MainPageController mainPageController;
+  late MainPageData mainPageData;
+  ForegroundUi({
     super.key,
     required this.height,
     required this.width,
@@ -14,7 +21,9 @@ class ForegroundUi extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    mainPageController = ref.watch(mainPageDataControllerProvider.notifier);
+    mainPageData = ref.watch(mainPageDataControllerProvider);
     return Container(
       padding: EdgeInsets.fromLTRB(0, height * 0.04, 0, 0),
       width: width * 0.88,
@@ -78,13 +87,14 @@ class ForegroundUi extends StatelessWidget {
   Widget categorySelection() {
     return DropdownButton(
       dropdownColor: Colors.black38,
-      value: SearchCategory.popular,
+      value: mainPageData.searchCategory,
       icon: Icon(
         Icons.menu,
         color: Colors.white24,
         ),
       underline: Container(height: 1, color: Colors.white24),
-      onChanged: (value) {},
+      onChanged: (value)=> value.toString().isNotEmpty? mainPageController.updateSearchCategory(value.toString()):null,  
+      
       items: [
         DropdownMenuItem(
           value: SearchCategory.popular,
