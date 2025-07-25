@@ -18,7 +18,10 @@ class MovieTile extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [moviePosterWidget(movie.posterURL())],
+      children: [
+        moviePosterWidget(movie.posterURL()),
+        movieInfoWidget()
+        ],
     );
   }
 

@@ -13,7 +13,7 @@ class MovieService {
   }
 
   Future<List<MovieModel>> getPopularMovies(int? page) async {
-    Response response = await _http.get('/movies/popular', {'page': page});
+    Response response = await _http.get('/movie/popular', {'page': page});
 
     if (response.statusCode == 200) {
       List<MovieModel> movies = ( response.data['results'] as List)
