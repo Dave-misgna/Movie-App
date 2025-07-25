@@ -7,6 +7,7 @@ import '../controller/provider.dart';
 import '../model/main_page_data.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+// ignore: must_be_immutable
 class ForegroundUi extends ConsumerWidget {
   final double height;
   final double width;
@@ -24,6 +25,9 @@ class ForegroundUi extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     mainPageController = ref.watch(mainPageDataControllerProvider.notifier);
     mainPageData = ref.watch(mainPageDataControllerProvider);
+
+    movieSearch.text = mainPageData.searchText;
+
     return Container(
       padding: EdgeInsets.fromLTRB(0, height * 0.04, 0, 0),
       width: width * 0.88,
@@ -69,7 +73,7 @@ class ForegroundUi extends ConsumerWidget {
       width: width * 0.50,
       child: TextField(
         controller: movieSearch,
-        onSubmitted: (value) {},
+        onSubmitted: (value) => mainPageController.updateSearchmovie(value),
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
           focusedBorder: InputBorder.none,

@@ -16,7 +16,7 @@ class MovieService {
     Response response = await _http.get('/movie/popular', {'page': page});
 
     if (response.statusCode == 200) {
-      List<MovieModel> movies = ( response.data['results'] as List)
+      List<MovieModel> movies = (response.data['results'] as List)
           .map((movie) => MovieModel.fromJson(movie))
           .toList();
       return movies;
@@ -29,7 +29,23 @@ class MovieService {
     Response response = await _http.get('/movie/upcoming', {'page': page});
 
     if (response.statusCode == 200) {
-      List<MovieModel> movies = ( response.data['results'] as List)
+      List<MovieModel> movies = (response.data['results'] as List)
+          .map((movie) => MovieModel.fromJson(movie))
+          .toList();
+      return movies;
+    } else {
+      throw Exception('Failed to load popular movies');
+    }
+  }
+
+  Future<List<MovieModel>> getSearchMovies(String search, {int? page}) async {
+    Response response = await _http.get('/search/movie', {
+      'query': search,
+      'page': page,
+    });
+
+    if (response.statusCode == 200) {
+      List<MovieModel> movies = (response.data['results'] as List)
           .map((movie) => MovieModel.fromJson(movie))
           .toList();
       return movies;

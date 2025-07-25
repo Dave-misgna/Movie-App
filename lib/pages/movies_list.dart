@@ -3,7 +3,6 @@ import 'package:flutter_movie_app/model/movie_model.dart';
 import 'package:flutter_movie_app/widget/movie_tile.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../controller/main_page_controller.dart';
 import '../controller/provider.dart';
 import '../model/main_page_data.dart';
 
@@ -17,7 +16,7 @@ class MoviesList extends ConsumerWidget {
     
     
     // Access the MainPageController and MainPageData using Riverpod
-    MainPageController mainPageController = ref.watch(mainPageDataControllerProvider.notifier);
+    
     MainPageData mainPageData = ref.watch(mainPageDataControllerProvider);
     
     final List<MovieModel> movies = mainPageData.movies;
