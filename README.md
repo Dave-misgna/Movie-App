@@ -1,16 +1,57 @@
-# flutter_movie_app
+# 🎬 Flutter Movie App
 
-A new Flutter project.
+A **Flutter Movie Application** that fetches movies from [The Movie Database (TMDb) API] 
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🎥 **Fetch Movies** – Browse movies from **Popular** or **Upcoming** categories.  
+- 🔍 **Search Movies** – Find any movie instantly by title.  
+- 📑 **Pagination** – Smooth infinite scrolling with paginated results.  
+- 🌗 **Modern UI** – Clean and responsive interface with movie posters, ratings, and details.  
+- 🚀 **State Management with Riverpod** – Scalable and reactive app state.  
+- 📦 **Service Locator with GetIt** – Clean dependency injection setup.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🛠 Tech Stack
+
+- **Flutter** – Cross-platform mobile framework.  
+- **Riverpod** – State management solution.  
+- **GetIt** – Service locator for dependency injection.  
+- **TMDb API** – Movie data provider.  
+
+---
+
+## 📸 Screenshots
+
+### 🎥 Popular Movies
+<img src="https://github.com/Dave-misgna/Movie-App/blob/main/flutter-movie-app.png" width="300"/>
+
+### 🎞 Upcoming Movies
+<img src="https://github.com/Dave-misgna/Movie-App/blob/main/movie_app_flutter.png" width="300"/>
+
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the Repository
+```
+git clone https://github.com/your-username/flutter-movie-app.git
+cd flutter-movie-app
+flutter pub get
+```
+
+### 2️⃣ Setup TMDb API
+  - Add your key inside your app config
+
+
+### 3️⃣ Run the App
+```
+flutter run
+```
+
+
+
